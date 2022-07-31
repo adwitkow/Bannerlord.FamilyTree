@@ -14,15 +14,22 @@
 		<string id="halfbrother" text="half brother" />
 		<string id="niece" text="niece" />
 		<string id="nephew" text="nephew" />
+		<string id="grandniece" text="grandniece" />
+		<string id="grandnephew" text="grandnephew" />
 		<string id="father" text="father" />
 		<string id="mother" text="mother" />
 		<string id="wife" text="wife" />
 		<string id="husband" text="husband" />
+		<string id="exhusband" text="ex-husband" />
+		<string id="exwife" text="ex-wife" />
 		<string id="companion" text="companion" />
 		<string id="you" text="you" />
 		<string id="aunt" text="aunt" />
 		<string id="uncle" text="uncle" />
+		<string id="grandaunt" text="grandaunt" />
+		<string id="granduncle" text="granduncle" />
 		<string id="cousin" text="cousin" />
+		<string id="distantcousin" text="distant cousin" />
 		<string id="grandmother" text="grandmother" />
 		<string id="grandfather" text="grandfather" />
 		<string id="granddaughter" text="granddaughter" />
@@ -31,5 +38,6 @@
 		<string id="greatgrandfather" text="great grandfather" />
 		<string id="greatgranddaughter" text="great granddaughter" />
 		<string id="greatgrandson" text="great grandson" />
+		<string id="relative_of_player" text="relative" />
   </strings>
 </base>

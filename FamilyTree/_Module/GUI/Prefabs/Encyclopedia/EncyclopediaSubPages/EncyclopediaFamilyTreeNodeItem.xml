@@ -7,12 +7,13 @@
 			<Children>
 				<EncyclopediaSubPageElement DataSource="{FamilyMember}">
 					<Children>
-						<TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" Text="@Role" PositionYOffset="-17" Brush="Encyclopedia.SubPage.Element.Name.Text"/>
+						<!-- <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" Text="@Role" PositionYOffset="-17" Brush="Encyclopedia.SubPage.Element.Name.Text"/> -->
+						<TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="@Role" PositionYOffset="-65" Brush="Encyclopedia.SubPage.Element.Name.Text"/>						
 					</Children>
 				</EncyclopediaSubPageElement>
 
 				<!-- Tree Connection Lines Container (Lines are added from the code) -->
-				<Widget Id="LineContainer" DoNotAcceptEvents="true" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" SuggestedWidth="0" HeightSizePolicy="Fixed" SuggestedHeight="!Encyclopedia.CharacterTree.Line.Height" HorizontalAlignment="Center" MarginTop="100" Sprite="BlankWhiteSquare_9" AlphaFactor="0.5">
+				<Widget Id="LineContainer" DoNotAcceptEvents="true" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" SuggestedWidth="0" HeightSizePolicy="Fixed" SuggestedHeight="!Encyclopedia.CharacterTree.Line.Height" HorizontalAlignment="Center" MarginTop="90" Sprite="BlankWhiteSquare_9" AlphaFactor="0.5">
 					<Children/>
 				</Widget>
 				<ListPanel Id="ChildContainer" DataSource="{Branch}" HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" SuggestedWidth="800" MarginTop="150" DoNotAcceptEvents="true" StackLayout.LayoutMethod="HorizontalLeftToRight">
