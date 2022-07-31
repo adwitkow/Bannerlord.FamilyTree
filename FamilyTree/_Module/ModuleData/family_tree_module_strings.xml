@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <strings>
+		<!-- Family Tree Group -->
+		<string id="str_familytreegroup" text="{=familytreegroup}Family Tree" />
+		<!-- Family Tree Roles -->
+		<string id="str_twin" text="{=twin}twin" />
+		<string id="str_sister" text="{=sister}sister" />
+		<string id="str_brother" text="{=brother}brother" />
+		<string id="str_halfsister" text="{=halfsister}half sister" />
+		<string id="str_halfbrother" text="{=halfbrother}half brother" />
+		<string id="str_niece" text="{=niece}niece" />
+		<string id="str_nephew" text="{=nephew}nephew" />
+		<string id="str_father" text="{=father}father" />
+		<string id="str_mother" text="{=mother}mother" />
+		<string id="str_wife" text="{=wife}wife" />
+		<string id="str_husband" text="{=husband}husband" />
+		<string id="str_companion" text="{=companion}companion" />
+		<string id="str_you" text="{=you}you" />
+		<string id="str_aunt" text="{=aunt}aunt" />
+		<string id="str_uncle" text="{=uncle}uncle" />
+		<string id="str_cousin" text="{=cousin}cousin" />
+		<string id="str_grandmother" text="{=grandmother}grandmother" />
+		<string id="str_grandfather" text="{=grandfather}grandfather" />
+		<string id="str_granddaughter" text="{=granddaughter}granddaughter" />
+		<string id="str_grandson" text="{=grandson}grandson" />
+		<string id="str_greatgrandmother" text="{=greatgrandmother}great grandmother" />
+		<string id="str_greatgrandfather" text="{=greatgrandfather}great grandfather" />
+		<string id="str_greatgranddaughter" text="{=greatgranddaughter}great granddaughter" />
+		<string id="str_greatgrandson" text="{=greatgrandson}great grandson" />
+  </strings>

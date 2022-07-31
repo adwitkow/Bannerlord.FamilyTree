@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTree", "FamilyTree\FamilyTree.csproj", "{B03F7A51-C535-43F6-AB36-63108A1AAA9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Beta_Debug|x64 = Beta_Debug|x64
+		Beta_Release|x64 = Beta_Release|x64
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+		Stable_Debug|x64 = Stable_Debug|x64
+		Stable_Release|x64 = Stable_Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Beta_Debug|x64.ActiveCfg = Beta_Debug|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Beta_Debug|x64.Build.0 = Beta_Debug|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Beta_Release|x64.ActiveCfg = Beta_Release|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Beta_Release|x64.Build.0 = Beta_Release|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Debug|x64.ActiveCfg = Debug|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Debug|x64.Build.0 = Debug|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Release|x64.ActiveCfg = Release|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Release|x64.Build.0 = Release|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Stable_Debug|x64.ActiveCfg = Stable_Debug|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Stable_Debug|x64.Build.0 = Stable_Debug|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Stable_Release|x64.ActiveCfg = Stable_Release|x64
+		{B03F7A51-C535-43F6-AB36-63108A1AAA9B}.Stable_Release|x64.Build.0 = Stable_Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {097F262C-3CA9-452F-A51D-131B57EAD718}
+	EndGlobalSection
+EndGlobal

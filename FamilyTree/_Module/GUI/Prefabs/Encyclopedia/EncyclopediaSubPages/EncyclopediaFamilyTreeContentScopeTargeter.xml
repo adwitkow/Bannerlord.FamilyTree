@@ -1,0 +1,1 @@
+<NavigationScopeTargeter ScopeID="EncyclopediaHeroFamilyTreeContentScope" ScopeParent="..\FamilyTreeWidget" UpNavigationScope="EncyclopediaHeroFamilyTreeDividerScope" DownNavigationScope="None" ScopeMovements="Horizontal" AlternateScopeMovements="Vertical" AlternateMovementStepSize="7" />

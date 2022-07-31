@@ -1,0 +1,3 @@
+<NavigationScopeTargeter ScopeID="EncyclopediaHeroFamilyTreeDividerScope" ScopeParent="..\FamilyTreeDivider" UpNavigationScope="EncyclopediaHeroFamilyContentScope" DownNavigationScope="EncyclopediaHeroFamilyTreeContentScope" ScopeMovements="Horizontal" />
+<!-- <NavigationAutoScrollWidget TrackedWidget="..\FamilyTreeDivider" ScrollYOffset="35" />
+<EncyclopediaDivider Id="FamilyTreeDivider" MarginTop="20" Parameter.Title="@FamilyTreeText" Parameter.ItemList="..\FamilyTreeWidget" GamepadNavigationIndex="0"/> -->

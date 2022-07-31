@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+  <tags>
+    <tag language="English" />
+  </tags>
+  <strings>
+		<!-- Family Tree Group -->
+		<string id="familytreegroup" text="Family Tree" />
+		<!-- Family Tree Roles -->
+		<string id="twin" text="twin" />
+		<string id="sister" text="sister" />
+		<string id="brother" text="brother" />
+		<string id="halfsister" text="half sister" />
+		<string id="halfbrother" text="half brother" />
+		<string id="niece" text="niece" />
+		<string id="nephew" text="nephew" />
+		<string id="father" text="father" />
+		<string id="mother" text="mother" />
+		<string id="wife" text="wife" />
+		<string id="husband" text="husband" />
+		<string id="companion" text="companion" />
+		<string id="you" text="you" />
+		<string id="aunt" text="aunt" />
+		<string id="uncle" text="uncle" />
+		<string id="cousin" text="cousin" />
+		<string id="grandmother" text="grandmother" />
+		<string id="grandfather" text="grandfather" />
+		<string id="granddaughter" text="granddaughter" />
+		<string id="grandson" text="grandson" />
+		<string id="greatgrandmother" text="great grandmother" />
+		<string id="greatgrandfather" text="great grandfather" />
+		<string id="greatgranddaughter" text="great granddaughter" />
+		<string id="greatgrandson" text="great grandson" />
+  </strings>
+</base>
