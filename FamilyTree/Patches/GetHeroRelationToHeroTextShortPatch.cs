@@ -181,7 +181,10 @@ namespace FamilyTree.Patches
                 {
                     return AddList("str_cousin");
                 }
-                GetDistantCousins(auntUncle, queriedHero);
+                if (GetDistantCousins(auntUncle, queriedHero))
+                {
+                    return true;
+                }
             }
             if (parent.Father is not null)
             {
