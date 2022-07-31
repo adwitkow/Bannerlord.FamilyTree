@@ -8,7 +8,7 @@
     <Nullable>disable</Nullable>
     
     <ModuleId>$(MSBuildProjectName)</ModuleId>
-    <ModuleName>$(MSBuildProjectName)</ModuleName>
+    <ModuleName>Family Tree</ModuleName>
     <GameFolder>$(BANNERLORD_GAME_DIR)</GameFolder>
     <!-- Module manually override GameVersion -->
     <OverrideGameVersion>e1.8.0</OverrideGameVersion>
