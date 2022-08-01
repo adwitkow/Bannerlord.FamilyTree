@@ -32,6 +32,7 @@
 		<string id="granduncle" text="granduncle" />
 		<string id="greatgrandaunt" text="great grandaunt" />
 		<string id="greatgranduncle" text="great granduncle" />
+		<string id="cousin" text="cousin" />
 		<string id="firstcousin" text="first cousin" />
 		<string id="secondcousin" text="second cousin" />
 		<string id="thirdcousin" text="third cousin" />

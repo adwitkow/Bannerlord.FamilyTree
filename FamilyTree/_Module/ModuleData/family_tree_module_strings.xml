@@ -28,6 +28,7 @@
 		<string id="str_granduncle" text="{=granduncle}granduncle" />
 		<string id="str_greatgrandaunt" text="{=greatgrandaunt}great grandaunt" />
 		<string id="str_greatgranduncle" text="{=greatgranduncle}great granduncle" />
+		<string id="str_cousin" text="{=cousin}cousin" />
 		<string id="str_firstcousin" text="{=firstcousin}first cousin" />
 		<string id="str_secondcousin" text="{=secondcousin}second cousin" />
 		<string id="str_thirdcousin" text="{=thirdcousin}third cousin" />
