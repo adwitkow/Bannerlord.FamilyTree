@@ -12,6 +12,8 @@
 		<string id="str_nephew" text="{=nephew}nephew" />
 		<string id="str_grandniece" text="{=grandniece}grandniece" />
 		<string id="str_grandnephew" text="{=grandnephew}grandnephew" />
+		<string id="str_greatgrandniece" text="{=greatgrandniece}great grandniece" />
+		<string id="str_greatgrandnephew" text="{=greatgrandnephew}great grandnephew" />
 		<string id="str_father" text="{=father}father" />
 		<string id="str_mother" text="{=mother}mother" />
 		<string id="str_wife" text="{=wife}wife" />
@@ -24,7 +26,11 @@
 		<string id="str_uncle" text="{=uncle}uncle" />
 		<string id="str_grandaunt" text="{=grandaunt}grandaunt" />
 		<string id="str_granduncle" text="{=granduncle}granduncle" />
-		<string id="str_cousin" text="{=cousin}cousin" />
+		<string id="str_greatgrandaunt" text="{=greatgrandaunt}great grandaunt" />
+		<string id="str_greatgranduncle" text="{=greatgranduncle}great granduncle" />
+		<string id="str_firstcousin" text="{=firstcousin}first cousin" />
+		<string id="str_secondcousin" text="{=secondcousin}second cousin" />
+		<string id="str_thirdcousin" text="{=thirdcousin}third cousin" />
 		<string id="str_distantcousin" text="{=distantcousin}distant cousin" />
 		<string id="str_grandmother" text="{=grandmother}grandmother" />
 		<string id="str_grandfather" text="{=grandfather}grandfather" />

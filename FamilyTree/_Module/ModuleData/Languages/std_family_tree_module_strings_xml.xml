@@ -16,6 +16,8 @@
 		<string id="nephew" text="nephew" />
 		<string id="grandniece" text="grandniece" />
 		<string id="grandnephew" text="grandnephew" />
+		<string id="greatgrandniece" text="great grandniece" />
+		<string id="greatgrandnephew" text="great grandnephew" />
 		<string id="father" text="father" />
 		<string id="mother" text="mother" />
 		<string id="wife" text="wife" />
@@ -28,7 +30,11 @@
 		<string id="uncle" text="uncle" />
 		<string id="grandaunt" text="grandaunt" />
 		<string id="granduncle" text="granduncle" />
-		<string id="cousin" text="cousin" />
+		<string id="greatgrandaunt" text="great grandaunt" />
+		<string id="greatgranduncle" text="great granduncle" />
+		<string id="firstcousin" text="first cousin" />
+		<string id="secondcousin" text="second cousin" />
+		<string id="thirdcousin" text="third cousin" />
 		<string id="distantcousin" text="distant cousin" />
 		<string id="grandmother" text="grandmother" />
 		<string id="grandfather" text="grandfather" />
