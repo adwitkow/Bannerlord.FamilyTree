@@ -46,7 +46,11 @@ namespace FamilyTree.Patches
                 // Nieces/nephews
                 foreach (Hero sibling in baseHero.Siblings)
                 {
-                   skip = GetNiecesNephews(sibling, queriedHero);
+                    skip = GetNieceNephew(sibling, queriedHero);
+                    if (skip)
+                    {
+                        break;
+                    } 
                 }
             }
             // Children
@@ -63,23 +67,22 @@ namespace FamilyTree.Patches
                     foreach (Hero child in baseHero.Children)
                     {
                         skip = GetGrandChildren(child, queriedHero);
+                        if (skip)
+                        {
+                            break;
+                        }
                     }
                 }
             }
             // Parents
             if (!skip)
             {
-                if (baseHero.Father == queriedHero)
+                if (baseHero.Father == queriedHero || baseHero.Mother == queriedHero)
                 {
-                    AddList("str_father");
+                    AddList(baseHero.Father == queriedHero ? "str_father" : "str_mother");
                 }
-                else if (baseHero.Mother == queriedHero)
+                else if (!RelatedToParent(baseHero.Father, queriedHero))
                 {
-                    AddList("str_mother");
-                }
-                else
-                {
-                    RelatedToParent(baseHero.Father, queriedHero);
                     RelatedToParent(baseHero.Mother, queriedHero);
                 }
             }
@@ -139,139 +142,178 @@ namespace FamilyTree.Patches
             return false;
         }
 
-        private static void RelatedToParent(Hero parent, Hero queriedHero)
+        private static bool RelatedToParent(Hero parent, Hero queriedHero, int order = 1)
         {
             if (parent is null)
             {
-                return;
+                return false;
             }
-            if (GetCousins(parent, queriedHero))
+            if (GetGrandParent(parent, queriedHero, order))
             {
-                return;
+                return true;
             }
-            if (GetAuntsUncles(parent, queriedHero))
+            if (GetParentsSiblingRelative(parent, queriedHero))
             {
-                return;
+                return true;
             }
-            GetGrandParents(parent, queriedHero);
+            if (RelatedToParent(parent.Father, queriedHero, ++order))
+            {
+                return true;
+            }
+            else
+            {
+                order--;
+            }
+            if (RelatedToParent(parent.Mother, queriedHero, ++order))
+            {
+                return true;
+            }
+            return false;
         }
 
-        private static bool GetNiecesNephews(Hero sibling, Hero queriedHero, bool first = true)
+        private static bool GetNieceNephew(Hero sibling, Hero queriedHero, int order = 0)
         {
             foreach (Hero nieceNephew in sibling.Children)
             {
                 if (nieceNephew == queriedHero)
                 {
-                    if (first)
+                    if (order == 0)
                     {
                         return AddList(queriedHero.IsFemale ? "str_niece" : "str_nephew");
                     }
-                    return AddList(queriedHero.IsFemale ? "str_grandniece" : "str_grandnephew");
+                    if (order == 1)
+                    {
+                        return AddList(queriedHero.IsFemale ? "str_grandniece" : "str_grandnephew");
+                    }
+                    return AddList(queriedHero.IsFemale ? "str_grandniece" : "str_grandnephew", order);
                 }
-                GetNiecesNephews(nieceNephew, queriedHero, false);
+                if (GetNieceNephew(nieceNephew, queriedHero, ++order))
+                {
+                    return true;
+                }
+                else
+                {
+                    order--;
+                }
             }
             return false;
         }
 
-        private static bool GetCousins(Hero parent, Hero queriedHero)
+        private static bool GetParentsSiblingRelative(Hero parent, Hero queriedHero, int order = 0)
         {
             foreach (Hero auntUncle in parent.Siblings)
             {
-                if (auntUncle.Children.Contains(queriedHero))
+                if (auntUncle == queriedHero)
                 {
-                    return AddList("str_cousin");
-                }
-                if (GetDistantCousins(auntUncle, queriedHero))
+                    if (order == 0)
+                    {
+                        return AddList(queriedHero.IsFemale ? "str_aunt" : "str_uncle");
+                    }
+                    if (order == 1)
+                    {
+                        return AddList(queriedHero.IsFemale ? "str_grandaunt" : "str_granduncle");
+                    }
+                    return AddList(queriedHero.IsFemale ? "str_grandaunt" : "str_granduncle", order);
+                }   
+                if (GetCousin(auntUncle, queriedHero))
                 {
                     return true;
                 }
             }
-            if (parent.Father is not null)
-            {
-                GetCousins(parent.Father, queriedHero);
-            }
-            if (parent.Mother is not null)
-            {
-                GetCousins(parent.Mother, queriedHero);
-            }
             return false;
         }
 
-        private static bool GetDistantCousins(Hero auntUncle, Hero queriedHero)
+        private static bool GetCousin(Hero auntUncle, Hero queriedHero, int order = 1)
         {
-            if (auntUncle.Children.Any((Hero auntUncleChild) => auntUncleChild == queriedHero)) 
-            { 
-                return AddList("str_distantcousin");
-            }
             foreach(Hero auntUncleChild in auntUncle.Children)
             {
-                GetDistantCousins(auntUncleChild, queriedHero);
-            }
-            return false;
-        }
-
-        private static bool GetAuntsUncles(Hero parent, Hero queriedHero, bool first = true)
-        {
-            if (parent.Siblings.Contains(queriedHero))
-            {
-                if (first)
+                if (auntUncleChild == queriedHero)
                 {
-                    return AddList(queriedHero.IsFemale ? "str_aunt" : "str_uncle");
+                    if (order == 1)
+                    {
+                        return AddList("str_firstcousin");
+                    }
+                    if (order == 2)
+                    {
+                        return AddList("str_secondcousin");
+                    }
+                    if (order == 3)
+                    {
+                        return AddList("str_thirdcousin");
+                    }
+                    return AddList("str_distantcousin");
                 }
-                return AddList(queriedHero.IsFemale ? "str_grandaunt" : "str_granduncle");
-            }
-            if (parent.Father is not null)
-            {
-                GetAuntsUncles(parent.Father, queriedHero, false);
-            }
-            if (parent.Mother is not null)
-            {
-                GetAuntsUncles(parent.Mother, queriedHero, false);
+                if (GetCousin(auntUncleChild, queriedHero, ++order))
+                {
+                    return true;
+                }
+                else
+                {
+                    order--;
+                }
             }
             return false;
         }
 
-        private static bool GetGrandParents(Hero parent, Hero queriedHero, bool first = true)
+        private static bool GetGrandParent(Hero parent, Hero queriedHero, int order)
         {
             if (parent.Father == queriedHero)
             {
-                return AddList(first ? "str_grandfather" : "str_greatgrandfather");
+                if (order == 1)
+                {
+                    return AddList("str_grandfather");
+                }
+                return AddList("str_grandfather", order);
             }
             else if (parent.Mother == queriedHero)
             {
-                return AddList(first ? "str_grandmother" : "str_greatgrandmother");
-            }
-            if (parent.Father is not null)
-            {
-                GetGrandParents(parent.Father, queriedHero, false);
-            }
-            if (parent.Mother is not null)
-            {
-                GetGrandParents(parent.Mother, queriedHero, false);
+                if (order == 1)
+                {
+                    return AddList("str_grandmother");
+                }
+                return AddList("str_grandmother", order);
             }
             return false;
         }
 
-        private static bool GetGrandChildren(Hero child, Hero queriedHero, bool first = true)
+        private static bool GetGrandChildren(Hero child, Hero queriedHero, int order = 1) 
         {
-            if (child.Children.Any((Hero grandChild) => grandChild == queriedHero))
-            {
-                if (first)
-                {
-                    return AddList(queriedHero.IsFemale ? "str_granddaughter" : "str_grandson");
-                }
-                return AddList(queriedHero.IsFemale ? "str_greatgranddaughter" : "str_greatgrandson");
-            }
             foreach(Hero grandChild in child.Children)
             {
-                GetGrandChildren(grandChild, queriedHero, false);
+                if (grandChild == queriedHero)
+                {
+                    if (order == 1)
+                    {
+                        return AddList(queriedHero.IsFemale ? "str_granddaughter" : "str_grandson");
+                    }
+                    return AddList(queriedHero.IsFemale ? "str_granddaughter" : "str_grandson", order);
+                }
+                if (GetGrandChildren(grandChild, queriedHero, ++order))
+                {
+                    return true;
+                }
+                else
+                {
+                    order--;
+                }
             }
             return false;
         }
 
-        private static bool AddList(string str)
+        private static bool AddList(string str, int order = 1)
         {
-            _list.Add(FindText(str).ToString());
+            if (order <= 1)
+            {
+                _list.Add(FindText(str).ToString());
+            }
+            else if (order == 2)
+            {
+                _list.Add(FindText("str_great") + " " + FindText(str).ToString());
+            }
+            else
+            {
+                _list.Add(FindText("str_great") + " x" + order.ToString() + FindText(str).ToString());
+            }
             return true;
         }
 
