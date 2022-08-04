@@ -77,9 +77,13 @@ namespace FamilyTree.Patches
             // Parents
             if (!skip)
             {
-                if (baseHero.Father == queriedHero || baseHero.Mother == queriedHero)
+                if (baseHero.Father == queriedHero)
                 {
-                    AddList(baseHero.Father == queriedHero ? "str_father" : "str_mother");
+                    AddList("str_father");
+                }
+                else if (baseHero.Mother == queriedHero)
+                {
+                    AddList("str_mother");
                 }
                 else if (!RelatedToParent(baseHero.Father, queriedHero))
                 {
@@ -101,6 +105,8 @@ namespace FamilyTree.Patches
                 AddList("str_you");
             }
             // Companion
+            // Weirdness with hero's family being considered companions
+            // Should only apply when no other titles are applied
             if (_list.Count == 0)
             {
                 if (queriedHero.CompanionOf == baseHero.Clan)
