@@ -4,9 +4,9 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia.Pages;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using FamilyTree.Encyclopedia;
+using FamilyTree.Helpers;
 
-namespace FamilyTree.Extension
+namespace FamilyTree.ViewModels
 {
     /* Reference EncyclopediaUnitPageVM and EncyclopediaHeroPageVM */
     [ViewModelMixin]

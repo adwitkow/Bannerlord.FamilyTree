@@ -1,7 +1,7 @@
 ﻿using Bannerlord.UIExtenderEx.Attributes;
 using Bannerlord.UIExtenderEx.Prefabs2;
 
-namespace FamilyTree.Extension
+namespace FamilyTree.ViewModels
 {
     /* Modules\SandBox\GUI\Prefabs\Encyclopedia\EncyclopediaSubPages */
     [PrefabExtension("EncyclopediaHeroPage", "descendant::NavigationScopeTargeter[@ScopeID='EncyclopediaHeroFamilyContentScope']")]

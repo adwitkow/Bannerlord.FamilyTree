@@ -1,6 +1,6 @@
 ﻿using TaleWorlds.CampaignSystem;
 
-namespace FamilyTree.Extension
+namespace FamilyTree.Helpers
 {
     public static class HeroHelper
     {

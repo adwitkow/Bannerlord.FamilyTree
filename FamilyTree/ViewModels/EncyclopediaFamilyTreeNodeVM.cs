@@ -2,7 +2,7 @@
 using TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia.Items;
 using TaleWorlds.Library;
 
-namespace FamilyTree.Encyclopedia
+namespace FamilyTree.ViewModels
 {
     /* Reference EncyclopediaTroopTreeNodeVM */
     public class EncyclopediaFamilyTreeNodeVM : ViewModel 
