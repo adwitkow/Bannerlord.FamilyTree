@@ -310,11 +310,13 @@ namespace FamilyTree.Patches
             }
             else if (order == 2)
             {
+                // Great
                 _list.Add(FindText("str_great") + " " + FindText(str).ToString());
             }
             else
             {
-                _list.Add(FindText("str_great") + " x" + order.ToString() + " " +  FindText(str).ToString());
+                // Great great = x2 so order - 1 because order starts at 3
+                _list.Add(FindText("str_great") + " x" + (order - 1).ToString() + " " +  FindText(str).ToString());
             }
             return true;
         }

@@ -1,4 +1,5 @@
-﻿using TaleWorlds.CampaignSystem;
+﻿using System.Collections.Generic;
+using TaleWorlds.CampaignSystem;
 
 namespace FamilyTree.Helpers
 {
@@ -7,76 +8,82 @@ namespace FamilyTree.Helpers
         // Patrilineal as well as by leader ranking and clan ranking
         public static Hero FindAncestorOf(Hero hero)
         {
-            Clan fatherClan = null;
-            Clan motherClan = null;
+            List<Hero> parents = new();
 
+            // Add parents to list if not null
             if (hero.Father is not null)
             {
-                fatherClan = hero.Father.Clan;
+                parents.Add(hero.Father);
             }
             if (hero.Mother is not null)
             {
-                motherClan = hero.Mother.Clan;
+                parents.Add(hero.Mother);
             }
 
-            // Kingdom Leader
-            if (fatherClan is not null && (hero.Father?.IsFactionLeader ?? false) && fatherClan?.Kingdom?.RulingClan == fatherClan)
+            // Kingdom Ruling Clan Leader
+            foreach (Hero parent in parents)
             {
-                return FindAncestorOf(hero.Father);
+                if (parent.Clan.Kingdom?.Leader == parent)
+                {
+                    return FindAncestorOf(parent);
+                }
             }
-            if (motherClan is not null && (hero.Mother?.IsFactionLeader ?? false) && motherClan?.Kingdom?.RulingClan == motherClan)
+            // Kingdom Ruling Clan
+            foreach (Hero parent in parents)
             {
-                return FindAncestorOf(hero.Mother);
+                if (parent.Clan.Kingdom?.RulingClan == parent.Clan)
+                {
+                    return FindAncestorOf(parent);
+                }
             }
 
+            // Kingdom Clan Leader
+            foreach (Hero parent in parents)
+            {
+                if (parent.Clan.IsKingdomFaction && parent.IsFactionLeader)
+                {
+                    return FindAncestorOf(parent);
+                }
+            }
             // Kingdom Clan
-            if (fatherClan is not null && fatherClan?.Kingdom?.RulingClan == fatherClan)
+            foreach (Hero parent in parents)
             {
-                return FindAncestorOf(hero.Father);
-            }
-            if (motherClan is not null && motherClan?.Kingdom?.RulingClan == motherClan)
-            {
-                return FindAncestorOf(hero.Mother);
+                if (parent.Clan.IsKingdomFaction)
+                {
+                    return FindAncestorOf(parent);
+                }
             }
 
             // Minor Faction Leader
-            if ((fatherClan?.IsMinorFaction ?? false) && (hero.Father?.IsFactionLeader ?? false))
+            foreach (Hero parent in parents)
             {
-                return FindAncestorOf(hero.Father);
+                if (parent.Clan.IsMinorFaction && parent.IsFactionLeader)
+                {
+                    return FindAncestorOf(parent);
+                }
             }
-            if ((motherClan?.IsMinorFaction ?? false) && (hero.Mother?.IsFactionLeader ?? false))
-            {
-                return FindAncestorOf(hero.Mother);
-            }
-
             // Minor Faction Clan
-            if (fatherClan?.IsMinorFaction ?? false)
+            foreach (Hero parent in parents)
             {
-                return FindAncestorOf(hero.Father);
-            }
-            if (motherClan?.IsMinorFaction ?? false)
-            {
-                return FindAncestorOf(hero.Mother);
+                if (parent.Clan.IsMinorFaction)
+                {
+                    return FindAncestorOf(parent);
+                }
             }
 
             // Clan Leader
-            if (fatherClan is not null && fatherClan?.Leader == hero.Father)
+            foreach (Hero parent in parents)
             {
-                return FindAncestorOf(hero.Father);
-            }
-            if (motherClan is not null && motherClan?.Leader == hero.Mother)
-            {
-                return FindAncestorOf(hero.Mother);
+                if (parent.Clan.Leader == parent)
+                {
+                    return FindAncestorOf(parent);
+                }
             }
 
             // Other
-            if (hero.Father is not null)
+            foreach (Hero parent in parents)
             {
-                return FindAncestorOf(hero.Father);
-            }
-            if (hero.Mother is not null)
-            {
-                return FindAncestorOf(hero.Mother);
+                return FindAncestorOf(parent);
             }
 
             return hero;
