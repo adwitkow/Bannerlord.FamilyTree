@@ -6,9 +6,6 @@
   <Version value="v$version$" />
   <Official value="false" />
   <DefaultModule value="false" />
-  <!-- e1.7.1 -->
-<!--   <SingleplayerModule value="true" />
-  <MultiplayerModule value="false" /> -->
   <!-- e1.8.0 -->
   <ModuleCategory value="Singleplayer"/>
   <DependedModules>

@@ -20,7 +20,7 @@ namespace FamilyTree.ViewModels
 
         public EncyclopediaHeroPageVMMixin(EncyclopediaHeroPageVM vm) : base(vm)
         {
-            _hero = vm.Obj as Hero;
+            _hero = (vm.Obj as Hero)!;
             /* TaleWorlds refers to the "root" as the top of the upgrade tree AKA oldest ancestor in our case */
             Hero rootHero = HeroHelper.FindAncestorOf(_hero);
             FamilyTree = new EncyclopediaFamilyTreeNodeVM(rootHero, _hero);

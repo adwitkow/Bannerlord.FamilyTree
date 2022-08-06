@@ -302,7 +302,6 @@ namespace FamilyTree.Patches
             return false;
         }
 
-
         private static bool AddList(string str, int order = 1)
         {
             if (order <= 1)
@@ -315,7 +314,7 @@ namespace FamilyTree.Patches
             }
             else
             {
-                _list.Add(FindText("str_great") + " x" + order.ToString() + FindText(str).ToString());
+                _list.Add(FindText("str_great") + " x" + order.ToString() + " " +  FindText(str).ToString());
             }
             return true;
         }
