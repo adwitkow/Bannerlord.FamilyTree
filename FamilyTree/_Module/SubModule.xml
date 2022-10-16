@@ -6,7 +6,6 @@
   <Version value="v$version$" />
   <Official value="false" />
   <DefaultModule value="false" />
-  <!-- e1.8.0 -->
   <ModuleCategory value="Singleplayer"/>
   <DependedModules>
     <DependedModule Id="Bannerlord.Harmony" DependentVersion="v$harmonyversion$" />
