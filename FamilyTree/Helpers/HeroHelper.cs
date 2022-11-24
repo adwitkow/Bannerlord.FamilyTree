@@ -11,13 +11,20 @@ namespace FamilyTree.Helpers
             List<Hero> parents = new();
 
             // Add parents to list if not null
+            // Also account for null clans just in case
             if (hero.Father is not null)
             {
-                parents.Add(hero.Father);
+                if (hero.Father.Clan is not null) 
+                {
+                    parents.Add(hero.Father);
+                }
             }
             if (hero.Mother is not null)
             {
-                parents.Add(hero.Mother);
+                if (hero.Mother.Clan is not null)
+                {
+                    parents.Add(hero.Mother);
+                }
             }
 
             // Kingdom Ruling Clan Leader
