@@ -39,5 +39,29 @@
 		<string id="grandson" text="grandson" />
 		<string id="great" text="great" />
 		<string id="relative_of_player" text="relative" />
-  </strings>
+		<!-- Family Tree In-Law Roles -->
+		<string id="sisterinlaw" text="sister-in-law" />
+		<string id="brotherinlaw" text="brother-in-law" />
+		<string id="nieceinlaw" text="niece-in-law" />
+		<string id="nephewinlaw" text="nephew-in-law" />
+		<string id="grandnieceinlaw" text="grandniece-in-law" />
+		<string id="grandnephewinlaw" text="grandnephew-in-law" />
+		<string id="fatherinlaw" text="father-in-law" />
+		<string id="motherinlaw" text="mother-in-law" />
+		<string id="auntinlaw" text="aunt-in-law" />
+		<string id="uncleinlaw" text="uncle-in-law" />
+		<string id="grandauntinlaw" text="grandaunt-in-law" />
+		<string id="granduncleinlaw" text="granduncle-in-law" />
+		<string id="cousininlaw" text="cousin-in-law" />
+		<string id="firstcousininlaw" text="first cousin-in-law" />
+		<string id="secondcousininlaw" text="second cousin-in-law" />
+		<string id="thirdcousininlaw" text="third cousin-in-law" />
+		<string id="distantcousininlaw" text="distant cousin-in-law" />
+		<string id="grandmotherinlaw" text="grandmother-in-law" />
+		<string id="grandfatherinlaw" text="grandfather-in-law" />
+		<string id="granddaughterinlaw" text="granddaughter-in-law" />
+		<string id="grandsoninlaw" text="grandson-in-law" />
+		<string id="daughterinlaw" text="daughter-in-law" />
+		<string id="soninlaw" text="son-in-law" />
+	</strings>
 </base>

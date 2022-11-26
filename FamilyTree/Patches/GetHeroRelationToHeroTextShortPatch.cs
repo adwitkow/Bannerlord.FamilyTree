@@ -22,55 +22,65 @@ namespace FamilyTree.Patches
             bool skip = false;
 
             // Siblings
-            if (baseHero.Siblings.Contains(queriedHero))
+            foreach (Hero sibling in baseHero.Siblings)
             {
-                if (baseHero.Father == queriedHero.Father && baseHero.Mother == queriedHero.Mother)
+                if (sibling == queriedHero)
                 {
-                    if (baseHero.Age == queriedHero.Age)
+                    if (baseHero.Father == queriedHero.Father && baseHero.Mother == queriedHero.Mother)
                     {
-                        skip = AddList("str_twin");
+                        if (baseHero.Age == queriedHero.Age)
+                        {
+                            skip = AddList("str_twin");
+
+                        }
+                        else
+                        {
+                            skip = AddList(queriedHero.IsFemale ? "str_sister" : "str_brother");
+                        }
                     }
-                    else
+                    // != acts as an XOR (exclusive OR)
+                    else if (baseHero.Father == queriedHero.Father != (baseHero.Mother == queriedHero.Mother))
                     {
-                        skip = AddList(queriedHero.IsFemale ? "str_sister" : "str_brother");
+                        skip = AddList(queriedHero.IsFemale ? "str_halfsister" : "str_halfbrother");
                     }
                 }
-                // != acts as an XOR (exclusive OR)
-                else if (baseHero.Father == queriedHero.Father != (baseHero.Mother == queriedHero.Mother))
+                else if (sibling.Spouse == queriedHero)
                 {
-                    skip = AddList(queriedHero.IsFemale ? "str_halfsister" : "str_halfbrother");
+                    // In-laws
+                    skip = AddList(queriedHero.IsFemale ? "str_sisterinlaw" : "str_brotherinlaw");
                 }
-            }
-            else 
-            {
-                // Nieces/nephews
-                foreach (Hero sibling in baseHero.Siblings)
+                else
                 {
+                    // Nieces/nephews
                     skip = GetNieceNephew(sibling, queriedHero);
-                    if (skip)
-                    {
-                        break;
-                    } 
+                }
+                if (skip)
+                {
+                    break;
                 }
             }
             // Children
             if (!skip)
             {
-                skip = false;
-                if (baseHero.Children.Contains(queriedHero))
+                foreach (Hero child in baseHero.Children)
                 {
-                    skip = AddList(queriedHero.IsFemale ? "str_daughter" : "str_son");
-                }
-                else
-                {
-                    // Grandchildren
-                    foreach (Hero child in baseHero.Children)
+                    if (child == queriedHero)
                     {
+                        skip = AddList(queriedHero.IsFemale ? "str_daughter" : "str_son");
+                    }
+                    else if (child.Spouse == queriedHero)
+                    {
+                        // In-laws
+                        skip = AddList(queriedHero.IsFemale ? "str_daughterinlaw" : "str_soninlaw");
+                    }
+                    else
+                    {
+                        // Grandchildren
                         skip = GetGrandChildren(child, queriedHero);
-                        if (skip)
-                        {
-                            break;
-                        }
+                    }
+                    if (skip)
+                    {
+                        break;
                     }
                 }
             }
@@ -164,6 +174,18 @@ namespace FamilyTree.Patches
                     }
                     return AddList(queriedHero.IsFemale ? "str_grandniece" : "str_grandnephew", order);
                 }
+                if (nieceNephew.Spouse == queriedHero)
+                {
+                    if (order == 0)
+                    {
+                        return AddList(queriedHero.IsFemale ? "str_nieceinlaw" : "str_nephewinlaw");
+                    }
+                    if (order == 1)
+                    {
+                        return AddList(queriedHero.IsFemale ? "str_grandnieceinlaw" : "str_grandnephewinlaw");
+                    }
+                    return AddList(queriedHero.IsFemale ? "str_grandnieceinlaw" : "str_grandnephewinlaw", order);
+                }
                 order += 1;
                 if (GetNieceNephew(nieceNephew, queriedHero, order))
                 {
@@ -188,6 +210,14 @@ namespace FamilyTree.Patches
                         return AddList(queriedHero.IsFemale ? "str_granddaughter" : "str_grandson");
                     }
                     return AddList(queriedHero.IsFemale ? "str_granddaughter" : "str_grandson", order);
+                }
+                if (grandChild.Spouse == queriedHero)
+                {
+                    if (order == 1)
+                    {
+                        return AddList(queriedHero.IsFemale ? "str_granddaughterinlaw" : "str_grandsoninlaw");
+                    }
+                    return AddList(queriedHero.IsFemale ? "str_granddaughterinlaw" : "str_grandsoninlaw", order);
                 }
                 order += 1;
                 if (GetGrandChildren(grandChild, queriedHero, order))
@@ -244,7 +274,15 @@ namespace FamilyTree.Patches
                         return AddList(queriedHero.IsFemale ? "str_aunt" : "str_uncle");
                     }
                     return AddList(queriedHero.IsFemale ? "str_grandaunt" : "str_granduncle", order);
-                }   
+                }
+                if (auntUncle.Spouse == queriedHero)
+                {
+                    if (order == 1)
+                    {
+                        return AddList(queriedHero.IsFemale ? "str_auntinlaw" : "str_uncleinlaw");
+                    }
+                    return AddList(queriedHero.IsFemale ? "str_grandauntinlaw" : "str_granduncleinlaw", order);
+                }
                 if (GetCousin(auntUncle, queriedHero))
                 {
                     return true;
@@ -255,7 +293,7 @@ namespace FamilyTree.Patches
 
         private static bool GetCousin(Hero auntUncle, Hero queriedHero, int order = 1)
         {
-            foreach(Hero auntUncleChild in auntUncle.Children)
+            foreach (Hero auntUncleChild in auntUncle.Children)
             {
                 if (auntUncleChild == queriedHero)
                 {
@@ -272,6 +310,22 @@ namespace FamilyTree.Patches
                         return AddList("str_thirdcousin");
                     }
                     return AddList("str_distantcousin");
+                }
+                if (auntUncleChild.Spouse == queriedHero)
+                {
+                    if (order == 1)
+                    {
+                        return AddList("str_firstcousininlaw");
+                    }
+                    if (order == 2)
+                    {
+                        return AddList("str_secondcousininlaw");
+                    }
+                    if (order == 3)
+                    {
+                        return AddList("str_thirdcousininlaw");
+                    }
+                    return AddList("str_distantcousininlaw");
                 }
                 order += 1;
                 if (GetCousin(auntUncleChild, queriedHero, order))
@@ -303,6 +357,22 @@ namespace FamilyTree.Patches
                     return AddList("str_grandmother");
                 }
                 return AddList("str_grandmother", order);
+            }
+            if (parent.Father?.Spouse == queriedHero)
+            {
+                if (order == 1)
+                {
+                    return AddList("str_grandfatherinlaw");
+                }
+                return AddList("str_grandfatherinlaw", order);
+            }
+            else if (parent.Mother?.Spouse == queriedHero)
+            {
+                if (order == 1)
+                {
+                    return AddList("str_grandmotherinlaw");
+                }
+                return AddList("str_grandmotherinlaw", order);
             }
             return false;
         }

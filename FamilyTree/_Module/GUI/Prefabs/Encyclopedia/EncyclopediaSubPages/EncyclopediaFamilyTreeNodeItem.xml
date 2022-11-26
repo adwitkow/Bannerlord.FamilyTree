@@ -3,10 +3,10 @@
 		<Constant Name="Encyclopedia.CharacterTree.Line.Height" BrushName="Encyclopedia.CharacterTree.Line" BrushLayer="Default" BrushValueType="Height"/>
 	</Constants>
 	<Window>
-		<EncyclopediaUnitTreeNodeItemBrushWidget HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" MarginTop="30" MarginLeft="30" MarginRight="30" ChildContainer="ChildContainer" LineContainer="LineContainer" LineBrush="Encyclopedia.CharacterTree.Line">
+		<EncyclopediaUnitTreeNodeItemBrushWidget HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" MarginTop="30" MarginLeft="30" MarginRight="30" ChildContainer="ChildContainer" LineContainer="LineContainer" LineBrush="Encyclopedia.CharacterTree.Line" >
 			<Children>
 
-				<ListPanel DataSource="{FamilyMember}" HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" HorizontalAlignment="Center" >
+				<ListPanel DataSource="{FamilyMember}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" StackLayout.LayoutMethod="HorizontalCentered">
 					<ItemTemplate>
 						<EncyclopediaSubPageElement>
 							<Children>

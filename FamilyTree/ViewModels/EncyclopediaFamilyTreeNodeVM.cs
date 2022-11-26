@@ -25,6 +25,12 @@ namespace FamilyTree.ViewModels
             {
                 FamilyMember.Add(new EncyclopediaFamilyMemberVM(rootHero.Spouse, activeHero));
             }
+            // Almost forgot to add exspouses
+            // We'll see how crazy this gets!
+            foreach (Hero exSpouses in rootHero.ExSpouses)
+            {
+                FamilyMember.Add(new EncyclopediaFamilyMemberVM(exSpouses, activeHero));
+            }
             foreach (Hero child in rootHero.Children)
             {
                 Branch.Add(new EncyclopediaFamilyTreeNodeVM(child, activeHero));
