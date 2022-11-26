@@ -164,13 +164,14 @@ namespace FamilyTree.Patches
                     }
                     return AddList(queriedHero.IsFemale ? "str_grandniece" : "str_grandnephew", order);
                 }
-                if (GetNieceNephew(nieceNephew, queriedHero, ++order))
+                order += 1;
+                if (GetNieceNephew(nieceNephew, queriedHero, order))
                 {
                     return true;
                 }
                 else
                 {
-                    order--;
+                    order -= 1;
                 }
             }
             return false;
@@ -188,13 +189,14 @@ namespace FamilyTree.Patches
                     }
                     return AddList(queriedHero.IsFemale ? "str_granddaughter" : "str_grandson", order);
                 }
-                if (GetGrandChildren(grandChild, queriedHero, ++order))
+                order += 1;
+                if (GetGrandChildren(grandChild, queriedHero, order))
                 {
                     return true;
                 }
                 else
                 {
-                    order--;
+                    order -= 1;
                 }
             }
             return false;
@@ -214,15 +216,17 @@ namespace FamilyTree.Patches
             {
                 return true;
             }
-            if (RelatedToParent(parent.Father, queriedHero, ++order))
+            order += 1;
+            if (RelatedToParent(parent.Father, queriedHero, order))
             {
                 return true;
             }
             else
             {
-                order--;
+                order -= 1;
             }
-            if (RelatedToParent(parent.Mother, queriedHero, ++order))
+            order += 1;
+            if (RelatedToParent(parent.Mother, queriedHero, order))
             {
                 return true;
             }
@@ -269,13 +273,14 @@ namespace FamilyTree.Patches
                     }
                     return AddList("str_distantcousin");
                 }
-                if (GetCousin(auntUncleChild, queriedHero, ++order))
+                order += 1;
+                if (GetCousin(auntUncleChild, queriedHero, order))
                 {
                     return true;
                 }
                 else
                 {
-                    order--;
+                    order -= 1;
                 }
             }
             return false;

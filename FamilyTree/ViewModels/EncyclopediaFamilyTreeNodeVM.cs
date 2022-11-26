@@ -9,12 +9,22 @@ namespace FamilyTree.ViewModels
     {
         private MBBindingList<EncyclopediaFamilyTreeNodeVM> _branch;
 
-        private EncyclopediaFamilyMemberVM _familyMember;
+        private MBBindingList<EncyclopediaFamilyMemberVM> _familyMember;
 
+        // Reminding myself what the params are:
+        // rootHero runs through each member in the family
+        // activeHero is always the currently selected hero
         public EncyclopediaFamilyTreeNodeVM(Hero rootHero, Hero activeHero)
         {
-            Branch = new MBBindingList<EncyclopediaFamilyTreeNodeVM>();
-            FamilyMember = new EncyclopediaFamilyMemberVM(rootHero, activeHero);
+            Branch = new();
+            FamilyMember = new()
+            {
+                new EncyclopediaFamilyMemberVM(rootHero, activeHero)
+            };
+            if (rootHero.Spouse is not null)
+            {
+                FamilyMember.Add(new EncyclopediaFamilyMemberVM(rootHero.Spouse, activeHero));
+            }
             foreach (Hero child in rootHero.Children)
             {
                 Branch.Add(new EncyclopediaFamilyTreeNodeVM(child, activeHero));
@@ -28,11 +38,14 @@ namespace FamilyTree.ViewModels
             {
                 x.RefreshValues();
             });
-            FamilyMember.RefreshValues();
+            FamilyMember.ApplyActionOnAllItems(delegate (EncyclopediaFamilyMemberVM x)
+            {
+                x.RefreshValues();
+            });
         }
 
         [DataSourceProperty]
-        public EncyclopediaFamilyMemberVM FamilyMember
+        public MBBindingList<EncyclopediaFamilyMemberVM> FamilyMember
         {
             get
             {
@@ -43,7 +56,7 @@ namespace FamilyTree.ViewModels
                 if (value != _familyMember)
                 {
                     _familyMember = value;
-                    OnPropertyChangedWithValue(value, "FamilyMember");
+                    OnPropertyChanged("FamilyMember");
                 }
             }
         }
