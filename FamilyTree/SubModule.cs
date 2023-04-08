@@ -2,19 +2,21 @@
 using HarmonyLib;
 using TaleWorlds.MountAndBlade;
 
-namespace FamilyTree
+namespace Bannerlord.FamilyTree
 {
     internal class SubModule : MBSubModuleBase
     {
+        private static readonly string Namespace = typeof(SubModule).Namespace;
+
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
 
-            var extender = new UIExtender("FamilyTree");
+            var extender = new UIExtender(Namespace);
             extender.Register(typeof(SubModule).Assembly);
             extender.Enable();
 
-            new Harmony("mod.bannerlord.tree.family").PatchAll();
+            new Harmony(Namespace).PatchAll();
         }
     }
 }

@@ -2,10 +2,10 @@
 using TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia.Items;
 using TaleWorlds.Library;
 
-namespace FamilyTree.ViewModels
+namespace Bannerlord.FamilyTree.ViewModels
 {
     /* Reference EncyclopediaTroopTreeNodeVM */
-    public class EncyclopediaFamilyTreeNodeVM : ViewModel 
+    public class EncyclopediaFamilyTreeNodeVM : ViewModel
     {
         private MBBindingList<EncyclopediaFamilyTreeNodeVM> _branch;
 

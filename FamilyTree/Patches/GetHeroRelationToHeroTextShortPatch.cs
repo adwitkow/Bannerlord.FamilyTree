@@ -8,7 +8,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 
-namespace FamilyTree.Patches
+namespace Bannerlord.FamilyTree.Patches
 {
     /* Repurposed from Extended Family to add in more relevant roles */
     [HarmonyPatch(typeof(ConversationHelper), "GetHeroRelationToHeroTextShort")]
@@ -146,7 +146,7 @@ namespace FamilyTree.Patches
             if (!char.IsLower(text[0]) != uppercaseFirst)
             {
                 char[] array = text.ToCharArray();
-                text = (uppercaseFirst ? array[0].ToString().ToUpper() : array[0].ToString().ToLower());
+                text = uppercaseFirst ? array[0].ToString().ToUpper() : array[0].ToString().ToLower();
                 for (int i = 1; i < array.Count(); i++)
                 {
                     text += array[i].ToString();
@@ -199,9 +199,9 @@ namespace FamilyTree.Patches
             return false;
         }
 
-        private static bool GetGrandChildren(Hero child, Hero queriedHero, int order = 1) 
+        private static bool GetGrandChildren(Hero child, Hero queriedHero, int order = 1)
         {
-            foreach(Hero grandChild in child.Children)
+            foreach (Hero grandChild in child.Children)
             {
                 if (grandChild == queriedHero)
                 {
@@ -391,7 +391,7 @@ namespace FamilyTree.Patches
             else
             {
                 // Great great = x2 so order - 1 because order starts at 3
-                _list.Add(FindText("str_great") + " x" + (order - 1).ToString() + " " +  FindText(str).ToString());
+                _list.Add(FindText("str_great") + " x" + (order - 1).ToString() + " " + FindText(str).ToString());
             }
             return true;
         }

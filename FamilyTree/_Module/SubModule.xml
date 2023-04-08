@@ -1,42 +1,47 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿﻿<?xml version="1.0" encoding="UTF-8"?>
 <Module xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/BUTR/Bannerlord.XmlSchemas/master/SubModule.xsd" >
-  <Id value="$moduleid$" />
-  <Name value="$modulename$" />
+  <Id value="$modulename$" />
+  <Name value="$displayname$" />
   <Version value="v$version$" />
-  <Official value="false" />
   <DefaultModule value="false" />
   <ModuleCategory value="Singleplayer"/>
-  <Url value="https://www.nexusmods.com/mountandblade2bannerlord/mods/3971" />
+  <ModuleType value="Community" />
   <DependedModules>
-    <DependedModule Id="Bannerlord.Harmony" DependentVersion="v$harmonyversion$" />
-    <DependedModule Id="Bannerlord.UIExtenderEx" DependentVersion="v$uiextenderexversion$" />
-    <DependedModule Id="Native" DependentVersion="e$gameversion$" />
-    <DependedModule Id="SandBoxCore" DependentVersion="e$gameversion$" />
-    <DependedModule Id="Sandbox" DependentVersion="e$gameversion$" />
+    <DependedModule Id="Bannerlord.Harmony" />
+    <DependedModule Id="Bannerlord.UIExtenderEx" />
+    <DependedModule Id="Native" />
+    <DependedModule Id="SandBoxCore" />
+    <DependedModule Id="Sandbox" />
+    <DependedModule Id="StoryMode" />
+    <DependedModule Id="CustomBattle" />
   </DependedModules>
   <!-- Community Dependency Metadata -->
   <!-- https://github.com/BUTR/Bannerlord.BUTRLoader#for-modders -->
   <DependedModuleMetadatas>
-    <DependedModuleMetadata id="Bannerlord.Harmony" order="LoadBeforeThis" version="v$harmonyversion$" />
-    <DependedModuleMetadata id="Bannerlord.UIExtenderEx" order="LoadBeforeThis" version="v$uiextenderexversion$" />
-    <DependedModuleMetadata id="Native" order="LoadBeforeThis" version="e$gameversion$.*" />
-    <DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" version="e$gameversion$.*" />
-    <DependedModuleMetadata id="Sandbox" order="LoadBeforeThis" version="e$gameversion$.*" />
-    <DependedModuleMetadata id="StoryMode" order="LoadBeforeThis" version="e$gameversion$.*" optional="true" />
-    <DependedModuleMetadata id="CustomBattle" order="LoadBeforeThis" version="e$gameversion$.*" optional="true" />
+    <DependedModuleMetadata id="Bannerlord.Harmony" order="LoadBeforeThis" />
+    <DependedModuleMetadata id="Bannerlord.UIExtenderEx" order="LoadBeforeThis" />
+    <DependedModuleMetadata id="Native" order="LoadBeforeThis" />
+    <DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" />
+    <DependedModuleMetadata id="Sandbox" order="LoadBeforeThis" />
+    <DependedModuleMetadata id="StoryMode" order="LoadBeforeThis" />
+    <DependedModuleMetadata id="CustomBattle" order="LoadBeforeThis" />
   </DependedModuleMetadatas>
+  <!-- Community Dependency Metadata -->
   <SubModules>
+    <!-- Bannerlord Module Loader. Do not change the name! -->
     <SubModule>
-      <Name value="$modulename$" />
-      <DLLName value="$moduleid$.dll" />
-      <SubModuleClassType value="$moduleid$.SubModule" />
-      <Tags />
+      <Name value="Bannerlord Module Loader" />
+      <DLLName value="Bannerlord.ModuleLoader.$modulename$.dll" />
+      <SubModuleClassType value="Bannerlord.ModuleLoader.Bannerlord_FamilyTree" />
+      <Tags>
+        <Tag key="LoaderFilter" value ="$modulename$.*.dll" />
+      </Tags>
     </SubModule>
   </SubModules>
-	<Xmls>
-		<XmlNode>
-			<XmlName id="GameText" path="family_tree_module_strings"/>
-		</XmlNode>
-	</Xmls>
+  <Xmls>
+    <XmlNode>
+      <XmlName id="GameText" path="family_tree_module_strings"/>
+    </XmlNode>
+  </Xmls>
 </Module>

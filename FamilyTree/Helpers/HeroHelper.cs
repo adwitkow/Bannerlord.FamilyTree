@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 
-namespace FamilyTree.Helpers
+namespace Bannerlord.FamilyTree.Helpers
 {
     public static class HeroHelper
     {
@@ -14,7 +14,7 @@ namespace FamilyTree.Helpers
             // Also account for null clans just in case
             if (hero.Father is not null)
             {
-                if (hero.Father.Clan is not null) 
+                if (hero.Father.Clan is not null)
                 {
                     parents.Add(hero.Father);
                 }
@@ -47,7 +47,7 @@ namespace FamilyTree.Helpers
             // Kingdom Clan Leader
             foreach (Hero parent in parents)
             {
-                if (parent.Clan.IsKingdomFaction && parent.IsFactionLeader)
+                if (parent.MapFaction.IsKingdomFaction && parent.IsFactionLeader)
                 {
                     return FindAncestorOf(parent);
                 }
@@ -55,7 +55,7 @@ namespace FamilyTree.Helpers
             // Kingdom Clan
             foreach (Hero parent in parents)
             {
-                if (parent.Clan.IsKingdomFaction)
+                if (parent.MapFaction.IsKingdomFaction)
                 {
                     return FindAncestorOf(parent);
                 }

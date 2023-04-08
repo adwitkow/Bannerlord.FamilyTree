@@ -1,11 +1,11 @@
 ﻿using Bannerlord.UIExtenderEx.Attributes;
 using Bannerlord.UIExtenderEx.Prefabs2;
 
-namespace FamilyTree.ViewModels
+namespace Bannerlord.FamilyTree.ViewModels
 {
     /* Modules\SandBox\GUI\Prefabs\Encyclopedia\EncyclopediaSubPages */
     [PrefabExtension("EncyclopediaHeroPage", "descendant::NavigationScopeTargeter[@ScopeID='EncyclopediaHeroFamilyContentScope']")]
-    internal class EncyclopediaFamilyGridScopeTargeterExtension: PrefabExtensionInsertPatch
+    internal class EncyclopediaFamilyGridScopeTargeterExtension : PrefabExtensionInsertPatch
     {
         public override InsertType Type => InsertType.Replace;
 
