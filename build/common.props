@@ -70,16 +70,13 @@
         <GameStableVersion>$(SecondLine)</GameStableVersion>
         <GameMinimalVersion>$(LastLine)</GameMinimalVersion>
         <!-- -->
-        <GameVersionWithPrefix>v1.0.0</GameVersionWithPrefix>
-        <GameVersionWithPrefix Condition="$(IsMinimal)">$(GameMinimalVersion)</GameVersionWithPrefix>
-        <GameVersionWithPrefix Condition="$(IsStable)">$(GameStableVersion)</GameVersionWithPrefix>
-        <GameVersionWithPrefix Condition="$(IsBeta)">$(GameBetaVersion)</GameVersionWithPrefix>
-        <!-- -->
-        <GameVersion>$(GameVersionWithPrefix.Substring(1))</GameVersion>
+        <GameVersion>1.0.0</GameVersion>
+        <GameVersion Condition="$(IsMinimal)">$(GameMinimalVersion)</GameVersion>
+        <GameVersion Condition="$(IsStable)">$(GameStableVersion)</GameVersion>
+        <GameVersion Condition="$(IsBeta)">$(GameBetaVersion)</GameVersion>
     </PropertyGroup>
     <PropertyGroup Condition="$(OverrideGameVersion) != ''">
-        <GameVersionWithPrefix>$(OverrideGameVersion)</GameVersionWithPrefix>
-        <GameVersion>$(GameVersionWithPrefix.Substring(1))</GameVersion>
+        <GameVersion>$(OverrideGameVersion)</GameVersion>
     </PropertyGroup>
 
     <!-- Game Folder(s) -->
