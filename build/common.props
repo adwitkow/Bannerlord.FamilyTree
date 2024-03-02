@@ -54,7 +54,7 @@
         <SGVItem Include="$([System.Text.RegularExpressions.Regex]::Split($(SGVFile), `\r\n|\r|\n`))" />
     </ItemGroup>
 
-    <PropertyGroup Condition="$(OverrideGameVersion) == ''">
+    <PropertyGroup>
         <!-- Parsing  supported-game-versions.txt -->
         <SGVLineCount>$([System.Text.RegularExpressions.Regex]::Split($(SGVFile), `\r\n|\r|\n`).Length)</SGVLineCount>
         <SGVLastEntryIndex>$([MSBuild]::Subtract($(SGVLineCount), 1))</SGVLastEntryIndex>
@@ -74,9 +74,6 @@
         <GameVersion Condition="$(IsMinimal)">$(GameMinimalVersion)</GameVersion>
         <GameVersion Condition="$(IsStable)">$(GameStableVersion)</GameVersion>
         <GameVersion Condition="$(IsBeta)">$(GameBetaVersion)</GameVersion>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(OverrideGameVersion) != ''">
-        <GameVersion>$(OverrideGameVersion)</GameVersion>
     </PropertyGroup>
 
     <!-- Game Folder(s) -->
