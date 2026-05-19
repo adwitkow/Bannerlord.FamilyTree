@@ -1,4 +1,7 @@
-﻿using TaleWorlds.CampaignSystem;
+﻿using Bannerlord.FamilyTree.Compatibility;
+using Bannerlord.ModuleManager;
+using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Conversation;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia.Items;
 using TaleWorlds.Library;
 
@@ -11,29 +14,39 @@ namespace Bannerlord.FamilyTree.ViewModels
 
         private MBBindingList<EncyclopediaFamilyMemberVM> _familyMember;
 
-        // Reminding myself what the params are:
-        // rootHero runs through each member in the family
-        // activeHero is always the currently selected hero
-        public EncyclopediaFamilyTreeNodeVM(Hero rootHero, Hero activeHero)
+        public EncyclopediaFamilyTreeNodeVM(Hero currentHero, Hero selectedHero)
         {
             Branch = new();
             FamilyMember = new()
             {
-                new EncyclopediaFamilyMemberVM(rootHero, activeHero)
+                new EncyclopediaFamilyMemberVM(currentHero, selectedHero)
             };
-            if (rootHero.Spouse is not null)
+
+            var spouses = new MBList<Hero>();
+            if (currentHero.Spouse is not null)
             {
-                FamilyMember.Add(new EncyclopediaFamilyMemberVM(rootHero.Spouse, activeHero));
+                spouses.Add(currentHero.Spouse);
             }
-            // Almost forgot to add exspouses
-            // We'll see how crazy this gets!
-            foreach (Hero exSpouses in rootHero.ExSpouses)
+
+            foreach (Hero secondarySpouse in ModCompatibility.GetSecondarySpouses(currentHero))
             {
-                FamilyMember.Add(new EncyclopediaFamilyMemberVM(exSpouses, activeHero));
+                spouses.Add(secondarySpouse);
             }
-            foreach (Hero child in rootHero.Children)
+
+            foreach (Hero exSpouse in currentHero.ExSpouses)
             {
-                Branch.Add(new EncyclopediaFamilyTreeNodeVM(child, activeHero));
+                spouses.Add(exSpouse);
+            }
+
+            foreach (Hero spouse in spouses.DistinctBy(spouse => spouse.StringId))
+            {
+                //var relation = ConversationHelper.GetHeroRelationToHeroTextShort(spouse, selectedHero, true);
+                FamilyMember.Add(new EncyclopediaFamilyMemberVM(spouse, selectedHero));
+            }
+
+            foreach (Hero child in currentHero.Children.DistinctBy(child => child.StringId))
+            {
+                Branch.Add(new EncyclopediaFamilyTreeNodeVM(child, selectedHero));
             }
         }
 

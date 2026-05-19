@@ -1,4 +1,5 @@
-﻿using Bannerlord.UIExtenderEx;
+﻿using Bannerlord.FamilyTree.Compatibility;
+using Bannerlord.UIExtenderEx;
 using TaleWorlds.MountAndBlade;
 
 namespace Bannerlord.FamilyTree
@@ -14,6 +15,13 @@ namespace Bannerlord.FamilyTree
             extender.Enable();
 
             base.OnSubModuleLoad();
+        }
+
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
+        {
+            base.OnBeforeInitialModuleScreenSetAsRoot();
+
+            ModCompatibility.Initialize();
         }
     }
 }
