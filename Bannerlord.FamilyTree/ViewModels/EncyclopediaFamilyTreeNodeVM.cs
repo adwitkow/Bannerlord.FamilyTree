@@ -1,25 +1,22 @@
 ﻿using Bannerlord.FamilyTree.Compatibility;
 using Bannerlord.ModuleManager;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.Conversation;
-using TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia.Items;
 using TaleWorlds.Library;
 
 namespace Bannerlord.FamilyTree.ViewModels
 {
-    /* Reference EncyclopediaTroopTreeNodeVM */
     public class EncyclopediaFamilyTreeNodeVM : ViewModel
     {
         private MBBindingList<EncyclopediaFamilyTreeNodeVM> _branch;
 
-        private MBBindingList<EncyclopediaFamilyMemberVM> _familyMember;
+        private MBBindingList<FamilyTreeEncyclopediaFamilyMemberVM> _familyMember;
 
         public EncyclopediaFamilyTreeNodeVM(Hero currentHero, Hero selectedHero)
         {
             Branches = new();
             FamilyMembers = new()
             {
-                new EncyclopediaFamilyMemberVM(currentHero, selectedHero)
+                new FamilyTreeEncyclopediaFamilyMemberVM(currentHero, selectedHero)
             };
 
             var spouses = new MBList<Hero>();
@@ -40,8 +37,7 @@ namespace Bannerlord.FamilyTree.ViewModels
 
             foreach (Hero spouse in spouses.DistinctBy(spouse => spouse.StringId))
             {
-                //var relation = ConversationHelper.GetHeroRelationToHeroTextShort(spouse, selectedHero, true);
-                FamilyMembers.Add(new EncyclopediaFamilyMemberVM(spouse, selectedHero));
+                FamilyMembers.Add(new FamilyTreeEncyclopediaFamilyMemberVM(spouse, selectedHero));
             }
 
             foreach (Hero child in currentHero.Children.DistinctBy(child => child.StringId))
@@ -53,18 +49,13 @@ namespace Bannerlord.FamilyTree.ViewModels
         public override void RefreshValues()
         {
             base.RefreshValues();
-            Branches.ApplyActionOnAllItems(delegate (EncyclopediaFamilyTreeNodeVM x)
-            {
-                x.RefreshValues();
-            });
-            FamilyMembers.ApplyActionOnAllItems(delegate (EncyclopediaFamilyMemberVM x)
-            {
-                x.RefreshValues();
-            });
+
+            Branches.ApplyActionOnAllItems(x => x.RefreshValues());
+            FamilyMembers.ApplyActionOnAllItems(x => x.RefreshValues());
         }
 
         [DataSourceProperty]
-        public MBBindingList<EncyclopediaFamilyMemberVM> FamilyMembers
+        public MBBindingList<FamilyTreeEncyclopediaFamilyMemberVM> FamilyMembers
         {
             get
             {
