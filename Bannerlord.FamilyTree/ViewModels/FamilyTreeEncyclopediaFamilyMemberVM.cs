@@ -32,7 +32,7 @@ public class FamilyTreeEncyclopediaFamilyMemberVM : HeroVM
             if (value != this._role)
             {
                 this._role = value;
-                base.OnPropertyChangedWithValue<string>(value, nameof(Role));
+                base.OnPropertyChangedWithValue(value, nameof(Role));
             }
         }
     }
