@@ -19,7 +19,7 @@
       <Children>
 
         <ListPanel
-            DataSource="{FamilyMember}"
+            DataSource="{FamilyMembers}"
             WidthSizePolicy="CoverChildren"
             HeightSizePolicy="CoverChildren"
             HorizontalAlignment="Center"
@@ -62,7 +62,7 @@
         </Widget>
         <ListPanel
             Id="ChildContainer"
-            DataSource="{Branch}"
+            DataSource="{Branches}"
             HeightSizePolicy="CoverChildren"
             WidthSizePolicy="CoverChildren"
             SuggestedWidth="800"

@@ -16,8 +16,8 @@ namespace Bannerlord.FamilyTree.ViewModels
 
         public EncyclopediaFamilyTreeNodeVM(Hero currentHero, Hero selectedHero)
         {
-            Branch = new();
-            FamilyMember = new()
+            Branches = new();
+            FamilyMembers = new()
             {
                 new EncyclopediaFamilyMemberVM(currentHero, selectedHero)
             };
@@ -41,30 +41,30 @@ namespace Bannerlord.FamilyTree.ViewModels
             foreach (Hero spouse in spouses.DistinctBy(spouse => spouse.StringId))
             {
                 //var relation = ConversationHelper.GetHeroRelationToHeroTextShort(spouse, selectedHero, true);
-                FamilyMember.Add(new EncyclopediaFamilyMemberVM(spouse, selectedHero));
+                FamilyMembers.Add(new EncyclopediaFamilyMemberVM(spouse, selectedHero));
             }
 
             foreach (Hero child in currentHero.Children.DistinctBy(child => child.StringId))
             {
-                Branch.Add(new EncyclopediaFamilyTreeNodeVM(child, selectedHero));
+                Branches.Add(new EncyclopediaFamilyTreeNodeVM(child, selectedHero));
             }
         }
 
         public override void RefreshValues()
         {
             base.RefreshValues();
-            Branch.ApplyActionOnAllItems(delegate (EncyclopediaFamilyTreeNodeVM x)
+            Branches.ApplyActionOnAllItems(delegate (EncyclopediaFamilyTreeNodeVM x)
             {
                 x.RefreshValues();
             });
-            FamilyMember.ApplyActionOnAllItems(delegate (EncyclopediaFamilyMemberVM x)
+            FamilyMembers.ApplyActionOnAllItems(delegate (EncyclopediaFamilyMemberVM x)
             {
                 x.RefreshValues();
             });
         }
 
         [DataSourceProperty]
-        public MBBindingList<EncyclopediaFamilyMemberVM> FamilyMember
+        public MBBindingList<EncyclopediaFamilyMemberVM> FamilyMembers
         {
             get
             {
@@ -81,7 +81,7 @@ namespace Bannerlord.FamilyTree.ViewModels
         }
 
         [DataSourceProperty]
-        public MBBindingList<EncyclopediaFamilyTreeNodeVM> Branch
+        public MBBindingList<EncyclopediaFamilyTreeNodeVM> Branches
         {
             get
             {
