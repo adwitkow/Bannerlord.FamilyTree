@@ -1,33 +1,80 @@
 <Prefab>
-	<Constants>
-		<Constant Name="Encyclopedia.CharacterTree.Line.Height" BrushName="Encyclopedia.CharacterTree.Line" BrushLayer="Default" BrushValueType="Height"/>
-	</Constants>
-	<Window>
-		<EncyclopediaUnitTreeNodeItemBrushWidget HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" MarginTop="30" MarginLeft="30" MarginRight="30" ChildContainer="ChildContainer" LineContainer="LineContainer" LineBrush="Encyclopedia.CharacterTree.Line" >
-			<Children>
+  <Constants>
+    <Constant
+        Name="Encyclopedia.CharacterTree.Line.Height"
+        BrushName="Encyclopedia.CharacterTree.Line"
+        BrushLayer="Default"
+        BrushValueType="Height" />
+  </Constants>
+  <Window>
+    <EncyclopediaUnitTreeNodeItemBrushWidget
+        HeightSizePolicy="CoverChildren"
+        WidthSizePolicy="CoverChildren"
+        MarginTop="30"
+        MarginLeft="30"
+        MarginRight="30"
+        ChildContainer="ChildContainer"
+        LineContainer="LineContainer"
+        LineBrush="Encyclopedia.CharacterTree.Line">
+      <Children>
 
-				<ListPanel DataSource="{FamilyMember}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" StackLayout.LayoutMethod="HorizontalCentered">
-					<ItemTemplate>
-						<EncyclopediaSubPageElement>
-							<Children>
-								<!-- <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" Text="@Role" PositionYOffset="-17" Brush="Encyclopedia.SubPage.Element.Name.Text"/> -->
-								<TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren" SuggestedWidth="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="@Role" PositionYOffset="-65" Brush="Encyclopedia.SubPage.Element.Name.Text"/>
-							</Children>
-						</EncyclopediaSubPageElement>
-					</ItemTemplate>
-				</ListPanel>
+        <ListPanel
+            DataSource="{FamilyMember}"
+            WidthSizePolicy="CoverChildren"
+            HeightSizePolicy="CoverChildren"
+            HorizontalAlignment="Center"
+            StackLayout.LayoutMethod="HorizontalCentered">
+          <ItemTemplate>
+            <EncyclopediaSubPageElement>
+              <Children>
+                <!-- <TextWidget WidthSizePolicy="CoverChildren"
+                                HeightSizePolicy="CoverChildren" HorizontalAlignment="Center"
+                                VerticalAlignment="Top" Text="@Role" PositionYOffset="-17"
+                                Brush="Encyclopedia.SubPage.Element.Name.Text"/> -->
+                <TextWidget
+                    WidthSizePolicy="Fixed"
+                    HeightSizePolicy="CoverChildren"
+                    SuggestedWidth="100"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Text="@Role"
+                    PositionYOffset="-65"
+                    Brush="Encyclopedia.SubPage.Element.Name.Text" />
+              </Children>
+            </EncyclopediaSubPageElement>
+          </ItemTemplate>
+        </ListPanel>
 
-				<!-- Tree Connection Lines Container (Lines are added from the code) -->
-				<Widget Id="LineContainer" DoNotAcceptEvents="true" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" SuggestedWidth="0" HeightSizePolicy="Fixed" SuggestedHeight="!Encyclopedia.CharacterTree.Line.Height" HorizontalAlignment="Center" MarginTop="100" Sprite="BlankWhiteSquare_9" AlphaFactor="0.5">
-					<Children/>
-				</Widget>
-				<ListPanel Id="ChildContainer" DataSource="{Branch}" HeightSizePolicy="CoverChildren" WidthSizePolicy="CoverChildren" SuggestedWidth="800" MarginTop="150" DoNotAcceptEvents="true" StackLayout.LayoutMethod="HorizontalRightToLeft">
-					<ItemTemplate>
-						<EncyclopediaFamilyTreeNodeItem/>
-					</ItemTemplate>
-				</ListPanel>
+        <!-- Tree Connection Lines Container (Lines are added from the code) -->
+        <Widget
+            Id="LineContainer"
+            DoNotAcceptEvents="true"
+            DoNotPassEventsToChildren="true"
+            WidthSizePolicy="Fixed"
+            SuggestedWidth="0"
+            HeightSizePolicy="Fixed"
+            SuggestedHeight="!Encyclopedia.CharacterTree.Line.Height"
+            HorizontalAlignment="Center"
+            MarginTop="100"
+            Sprite="BlankWhiteSquare_9"
+            AlphaFactor="0.5">
+          <Children />
+        </Widget>
+        <ListPanel
+            Id="ChildContainer"
+            DataSource="{Branch}"
+            HeightSizePolicy="CoverChildren"
+            WidthSizePolicy="CoverChildren"
+            SuggestedWidth="800"
+            MarginTop="150"
+            DoNotAcceptEvents="true"
+            StackLayout.LayoutMethod="HorizontalRightToLeft">
+          <ItemTemplate>
+            <EncyclopediaFamilyTreeNodeItem />
+          </ItemTemplate>
+        </ListPanel>
 
-			</Children>
-		</EncyclopediaUnitTreeNodeItemBrushWidget>
-	</Window>
+      </Children>
+    </EncyclopediaUnitTreeNodeItemBrushWidget>
+  </Window>
 </Prefab>
