@@ -15,7 +15,7 @@ public class FamilyTreeEncyclopediaFamilyMemberVM : HeroVM
         BaseHero = baseHero;
         Role = string.Empty;
 
-        RefreshValues();
+        ResetRoleValue();
     }
 
     public Hero BaseHero { get; }
@@ -25,13 +25,13 @@ public class FamilyTreeEncyclopediaFamilyMemberVM : HeroVM
     {
         get
         {
-            return this._role;
+            return _role;
         }
         set
         {
-            if (value != this._role)
+            if (value != _role)
             {
-                this._role = value;
+                _role = value;
                 base.OnPropertyChangedWithValue(value, nameof(Role));
             }
         }
@@ -41,9 +41,14 @@ public class FamilyTreeEncyclopediaFamilyMemberVM : HeroVM
     {
         base.RefreshValues();
 
+        ResetRoleValue();
+    }
+
+    private void ResetRoleValue()
+    {
         if (BaseHero is not null && Hero != BaseHero)
         {
-            this.Role = ConversationHelper.GetHeroRelationToHeroTextShort(Hero, BaseHero, true);
+            Role = ConversationHelper.GetHeroRelationToHeroTextShort(Hero, BaseHero, true);
         }
     }
 }

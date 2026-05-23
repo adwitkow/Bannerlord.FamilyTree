@@ -7,9 +7,9 @@ namespace Bannerlord.FamilyTree.ViewModels
 {
     public class EncyclopediaFamilyTreeNodeVM : ViewModel
     {
-        private MBBindingList<EncyclopediaFamilyTreeNodeVM> _branch;
+        private MBBindingList<EncyclopediaFamilyTreeNodeVM> _branches;
 
-        private MBBindingList<FamilyTreeEncyclopediaFamilyMemberVM> _familyMember;
+        private MBBindingList<FamilyTreeEncyclopediaFamilyMemberVM> _familyMembers;
 
         public EncyclopediaFamilyTreeNodeVM(Hero currentHero, Hero selectedHero)
         {
@@ -59,13 +59,13 @@ namespace Bannerlord.FamilyTree.ViewModels
         {
             get
             {
-                return _familyMember;
+                return _familyMembers;
             }
             set
             {
-                if (value != _familyMember)
+                if (value != _familyMembers)
                 {
-                    _familyMember = value;
+                    _familyMembers = value;
                     OnPropertyChanged("FamilyMember");
                 }
             }
@@ -76,13 +76,13 @@ namespace Bannerlord.FamilyTree.ViewModels
         {
             get
             {
-                return _branch;
+                return _branches;
             }
             set
             {
-                if (value != _branch)
+                if (value != _branches)
                 {
-                    _branch = value;
+                    _branches = value;
                     OnPropertyChanged("Branch");
                 }
             }
