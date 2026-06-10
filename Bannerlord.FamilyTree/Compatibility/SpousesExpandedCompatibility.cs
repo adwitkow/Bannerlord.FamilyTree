@@ -24,7 +24,10 @@ public static class SpousesExpandedCompatibility
 
     public static void InitializeIfLoaded()
     {
-        Initialized = TryInitialize();
+        if (!Initialized)
+        {
+            Initialized = TryInitialize();
+        }
     }
 
     public static bool TryInitialize()
