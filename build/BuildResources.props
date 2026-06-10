@@ -1,0 +1,8 @@
+<Project>
+
+    <PropertyGroup>
+        <ModuleId>Bannerlord.FamilyTree</ModuleId>
+        <ModuleName>Family Tree</ModuleName>
+    </PropertyGroup>
+
+</Project>
