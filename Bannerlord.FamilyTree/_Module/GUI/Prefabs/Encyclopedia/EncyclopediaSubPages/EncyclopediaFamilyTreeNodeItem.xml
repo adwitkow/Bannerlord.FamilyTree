@@ -1,21 +1,38 @@
 <Prefab>
   <Constants>
+
     <Constant
-        Name="Encyclopedia.CharacterTree.Line.Height"
-        BrushName="Encyclopedia.CharacterTree.Line"
-        BrushLayer="Default"
-        BrushValueType="Height" />
+      Name="Encyclopedia.SubPage.Element.Width"
+      BrushName="Encyclopedia.SubPage.Element"
+      BrushLayer="Default"
+      BrushValueType="Width" />
+    <Constant
+      Name="Encyclopedia.SubPage.Element.Height"
+      BrushName="Encyclopedia.SubPage.Element"
+      BrushLayer="Default"
+      BrushValueType="Height" />
+
+    <Constant
+      Name="Encyclopedia.CharacterTree.Line.Height"
+      BrushName="Encyclopedia.CharacterTree.Line"
+      BrushLayer="Default"
+      BrushValueType="Height" />
+
+    <Constant
+      Name="IconAlpha"
+      Value="0.7" />
   </Constants>
   <Window>
     <EncyclopediaUnitTreeNodeItemBrushWidget
-        HeightSizePolicy="CoverChildren"
-        WidthSizePolicy="CoverChildren"
-        MarginTop="30"
-        MarginLeft="30"
-        MarginRight="30"
-        ChildContainer="ChildContainer"
-        LineContainer="LineContainer"
-        LineBrush="Encyclopedia.CharacterTree.Line">
+      HeightSizePolicy="CoverChildren"
+      WidthSizePolicy="CoverChildren"
+      MarginTop="30"
+      MarginLeft="30"
+      MarginRight="30"
+      ChildContainer="ChildContainer"
+      LineContainer="LineContainer"
+      LineBrush="Encyclopedia.CharacterTree.Line"
+      AlternateLineBrush="Encyclopedia.CharacterTree.Line.Alternative">
       <Children>
 
         <ListPanel
@@ -47,28 +64,28 @@
 
         <!-- Tree Connection Lines Container (Lines are added from the code) -->
         <Widget
-            Id="LineContainer"
-            DoNotAcceptEvents="true"
-            DoNotPassEventsToChildren="true"
-            WidthSizePolicy="Fixed"
-            SuggestedWidth="0"
-            HeightSizePolicy="Fixed"
-            SuggestedHeight="!Encyclopedia.CharacterTree.Line.Height"
-            HorizontalAlignment="Center"
-            MarginTop="100"
-            Sprite="BlankWhiteSquare_9"
-            AlphaFactor="0.5">
-          <Children />
+          Id="LineContainer"
+          DoNotAcceptEvents="true"
+          DoNotPassEventsToChildren="true"
+          WidthSizePolicy="CoverChildren"
+          HeightSizePolicy="Fixed"
+          SuggestedHeight="!Encyclopedia.CharacterTree.Line.Height"
+          HorizontalAlignment="Center"
+          MarginTop="100">
+          <Children>
+
+          </Children>
         </Widget>
+
         <ListPanel
-            Id="ChildContainer"
-            DataSource="{Branches}"
-            HeightSizePolicy="CoverChildren"
-            WidthSizePolicy="CoverChildren"
-            SuggestedWidth="800"
-            MarginTop="150"
-            DoNotAcceptEvents="true"
-            StackLayout.LayoutMethod="HorizontalRightToLeft">
+          Id="ChildContainer"
+          DataSource="{Branches}"
+          HeightSizePolicy="CoverChildren"
+          WidthSizePolicy="CoverChildren"
+          SuggestedWidth="800"
+          MarginTop="130"
+          DoNotAcceptEvents="true"
+          StackLayout.LayoutMethod="HorizontalRightToLeft">
           <ItemTemplate>
             <EncyclopediaFamilyTreeNodeItem />
           </ItemTemplate>
