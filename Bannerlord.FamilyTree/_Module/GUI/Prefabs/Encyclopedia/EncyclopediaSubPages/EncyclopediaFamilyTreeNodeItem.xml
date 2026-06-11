@@ -27,8 +27,8 @@
       HeightSizePolicy="CoverChildren"
       WidthSizePolicy="CoverChildren"
       MarginTop="30"
-      MarginLeft="30"
-      MarginRight="30"
+      MarginLeft="10"
+      MarginRight="10"
       ChildContainer="ChildContainer"
       LineContainer="LineContainer"
       LineBrush="Encyclopedia.CharacterTree.Line"
@@ -36,27 +36,27 @@
       <Children>
 
         <ListPanel
-            DataSource="{FamilyMembers}"
-            WidthSizePolicy="CoverChildren"
-            HeightSizePolicy="CoverChildren"
-            HorizontalAlignment="Center"
-            StackLayout.LayoutMethod="HorizontalCentered">
+          DataSource="{FamilyMembers}"
+          WidthSizePolicy="CoverChildren"
+          HeightSizePolicy="CoverChildren"
+          SuggestedWidth="130"
+          HorizontalAlignment="Center">
           <ItemTemplate>
             <EncyclopediaSubPageElement>
               <Children>
-                <!-- <TextWidget WidthSizePolicy="CoverChildren"
-                                HeightSizePolicy="CoverChildren" HorizontalAlignment="Center"
-                                VerticalAlignment="Top" Text="@Role" PositionYOffset="-17"
-                                Brush="Encyclopedia.SubPage.Element.Name.Text"/> -->
+
+                <!--Element Name-->
                 <TextWidget
-                    WidthSizePolicy="Fixed"
-                    HeightSizePolicy="CoverChildren"
-                    SuggestedWidth="100"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Text="@Role"
-                    PositionYOffset="-65"
-                    Brush="Encyclopedia.SubPage.Element.Name.Text" />
+                  DoNotAcceptEvents="true"
+                  WidthSizePolicy="Fixed"
+                  HeightSizePolicy="Fixed"
+                  SuggestedWidth="!Encyclopedia.SubPage.Element.Width"
+                  SuggestedHeight="30"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Bottom"
+                  Text="@Role"
+                  PositionYOffset="-60"
+                  Brush="Encyclopedia.SubPage.Element.Name.Text" />
               </Children>
             </EncyclopediaSubPageElement>
           </ItemTemplate>
@@ -85,7 +85,8 @@
           SuggestedWidth="800"
           MarginTop="130"
           DoNotAcceptEvents="true"
-          StackLayout.LayoutMethod="HorizontalRightToLeft">
+          HorizontalAlignment="Center"
+          StackLayout.LayoutMethod="HorizontalLeftToRight">
           <ItemTemplate>
             <EncyclopediaFamilyTreeNodeItem />
           </ItemTemplate>
