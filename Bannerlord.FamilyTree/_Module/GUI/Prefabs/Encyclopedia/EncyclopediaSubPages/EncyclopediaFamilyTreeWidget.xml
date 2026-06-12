@@ -1,6 +1,6 @@
 <Widget
   Id="FamilyTreeWidget"
-  HeightSizePolicy="StretchToParent"
+  HeightSizePolicy="CoverChildren"
   WidthSizePolicy="StretchToParent">
   <Children>
 
